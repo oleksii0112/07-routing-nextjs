@@ -1,10 +1,11 @@
 import axios from "axios";
-import type { Note, NewNote } from "@/types/note";
+import type { Note, NewNote, NoteTag } from "@/types/note";
 
 export interface FetchNotesParams {
   search?: string;
   page: number;
   perPage: number;
+  tag?: NoteTag;
 }
 export interface FetchNotesResponse {
   notes: Note[];

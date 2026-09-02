@@ -23,3 +23,16 @@
   line-height: 28px;
   margin-bottom: 16px;
 }
+
+.link {
+  background-color:palegreen;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.link:hover, .link:focus {
+  background-color: black;
+  color: palegreen;
+}
