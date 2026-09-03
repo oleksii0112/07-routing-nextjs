@@ -1,6 +1,6 @@
 "use client";
 
-import css from "@/app/notes/[id]/NoteDetails.module.css";
+import css from "./NotePreview.module.css";
 import Modal from "@/components/Modal/Modal";
 import { useQuery } from "@tanstack/react-query";
 import { useParams, useRouter } from "next/navigation";
