@@ -15,8 +15,13 @@ import { fetchNotes, createNote, deleteNote } from "@/lib/api";
 import { useState, useEffect } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useDebouncedCallback } from "use-debounce";
+import { NoteTag } from "@/types/note";
 
-export default function Notes() {
+interface NotesProps {
+  tag?: NoteTag;
+}
+
+export default function Notes({ tag }: NotesProps) {
   const [page, setPage] = useState(1);
   const [inputValue, setInputValue] = useState("");
   const [search, setSearch] = useState(``);
@@ -24,8 +29,8 @@ export default function Notes() {
   const perPage = 12;
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["getNotes", search, page],
-    queryFn: () => fetchNotes({ search, page, perPage }),
+    queryKey: ["getNotes", search, page, tag ?? "all"],
+    queryFn: () => fetchNotes({ search, page, perPage, tag }),
     placeholderData: keepPreviousData,
   });
 
@@ -91,6 +96,11 @@ export default function Notes() {
       {isError && <ErrorMessage />}
       {!isLoading && !isError && notes.length > 0 && (
         <NoteList notes={notes} onDelete={(id) => deleteNotes.mutate(id)} />
+      )}
+      {!isLoading && !isError && notes.length === 0 && (
+        <p className={css.emptyState}>
+          {tag ? `Нотаток з тегом "${tag}" ще немає` : "Нотаток ще немає"}
+        </p>
       )}
       {isModalOpen && (
         <Modal onClose={() => setIsModalOpen(false)}>

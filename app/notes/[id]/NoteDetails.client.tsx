@@ -4,7 +4,6 @@ import css from "./NoteDetails.module.css";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { fetchNoteById } from "@/lib/api";
-import { notFound } from "next/navigation";
 
 
 export default function NoteDetails() {
@@ -24,7 +23,7 @@ export default function NoteDetails() {
   }
 
   if (!note) {
-    notFound();
+    return <p>Something went wrong.</p>;
   }
 
   return (

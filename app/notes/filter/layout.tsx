@@ -6,7 +6,7 @@ type Props = {
   sidebar: React.ReactNode;
 };
 
-const NotesLayout = ({ children, sidebar }: Props) => {
+const FilterLayout = ({ children, sidebar }: Props) => {
   return (
     <section className={css.container}>
       <aside className={css.sidebar}>{sidebar}</aside>
@@ -15,4 +15,4 @@ const NotesLayout = ({ children, sidebar }: Props) => {
   );
 };
 
-export default NotesLayout;
+export default FilterLayout;

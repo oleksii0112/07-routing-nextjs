@@ -14,3 +14,11 @@ export interface NewNote {
   content: string;
   tag: NoteTag;
 }
+
+export const NOTE_TAGS: NoteTag[] = [
+  "Todo",
+  "Work",
+  "Personal",
+  "Meeting",
+  "Shopping",
+];
